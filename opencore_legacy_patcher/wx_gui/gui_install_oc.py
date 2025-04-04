@@ -6,6 +6,7 @@ import wx
 import logging
 import threading
 import traceback
+import time
 
 from .. import constants
 
@@ -103,9 +104,7 @@ class InstallOCFrame(wx.Frame):
         thread = threading.Thread(target=self._fetch_disks)
         thread.start()
 
-        while thread.is_alive():
-            wx.Yield()
-            continue
+        gui_support.wait_for_thread(thread)
 
         self.progress_bar_animation.stop_pulse()
         self.progress_bar.Hide()
@@ -281,8 +280,7 @@ class InstallOCFrame(wx.Frame):
         thread = threading.Thread(target=self._install_oc, args=(partition,))
         thread.start()
 
-        while thread.is_alive():
-            wx.Yield()
+        gui_support.wait_for_thread(thread)
 
         if self.result is True:
             if self.constants.update_stage != gui_support.AutoUpdateStages.INACTIVE and self.constants.detected_os >= os_data.os_data.big_sur:

@@ -13,7 +13,7 @@ from .detections import device_probe
 class Constants:
     def __init__(self) -> None:
         # Patcher Versioning
-        self.patcher_version:                 str = "2.3.2"  # OpenCore-Legacy-Patcher
+        self.patcher_version:                 str = "2.4.0"  # OpenCore-Legacy-Patcher
         self.patcher_support_pkg_version:     str = "1.9.3"  # PatcherSupportPkg
         self.copyright_date:                  str = "Copyright © 2020-2025 Dortania"
         self.patcher_name:                    str = "OpenCore Legacy Patcher"
@@ -155,6 +155,7 @@ class Constants:
         self.unpack_thread                   = None  #  Determine if unpack thread finished (threading.Thread)
         self.update_stage:               int = 0  #     Determine update stage (see gui_support.py)
         self.log_filepath:              Path = None  #  Path to log file
+        self.thread_sleep_interval:    float = 0.1   #  Sleep interval between UI updates (seconds) - reduce refresh-rate to reduce CPU-usage
 
         self.commit_info: tuple = (None, None, None)  # Commit info (Branch, Commit Date, Commit URL)
 
