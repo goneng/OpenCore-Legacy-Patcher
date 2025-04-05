@@ -317,7 +317,7 @@ class macOSInstallerFlashFrame(wx.Frame):
             wx.CallAfter(progress_bar.SetValue, bytes_written)
 
             wx.Yield()
-            time.sleep(self.constants.thread_sleep_interval)
+            time.sleep(self.constants.thread_nap_interval)
 
         if self.result is False:
             logging.error("Failed to flash installer, cannot continue.")

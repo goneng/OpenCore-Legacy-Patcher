@@ -102,7 +102,7 @@ class UpdateFrame(wx.Frame):
 
         thread = threading.Thread(target=_fetch_update)
         thread.start()
-        gui_support.wait_for_thread(thread)
+        gui_support.wait_for_thread(thread, self.constants.thread_nap_interval)
 
         gui_download.DownloadFrame(
             self.frame,
@@ -167,7 +167,7 @@ class UpdateFrame(wx.Frame):
         thread = threading.Thread(target=self._launch_update)
         thread.start()
 
-        gui_support.wait_for_thread(thread)
+        gui_support.wait_for_thread(thread, self.constants.thread_nap_interval)
 
         timer = 5
         while True:

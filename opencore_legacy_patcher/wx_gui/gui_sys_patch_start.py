@@ -311,7 +311,7 @@ class SysPatchStartFrame(wx.Frame):
 
         while gui_support.PayloadMount(self.constants, self).is_unpack_finished() is False:
             wx.Yield()
-            time.sleep(self.constants.thread_sleep_interval)
+            time.sleep(self.constants.thread_nap_interval)
 
         if self.patches[HardwarePatchsetSettings.KERNEL_DEBUG_KIT_REQUIRED] is True:
             if self._kdk_download(self) is False:

@@ -87,7 +87,7 @@ class DownloadFrame(wx.Frame):
             label_amount.Centre(wx.HORIZONTAL)
 
             wx.Yield()
-            time.sleep(self.constants.thread_sleep_interval)
+            time.sleep(self.constants.thread_nap_interval)
 
         if self.download_obj.download_complete is False and self.user_cancelled is False:
             wx.MessageBox(f"Download failed: \n{self.download_obj.error_msg}", "Error", wx.OK | wx.ICON_ERROR)

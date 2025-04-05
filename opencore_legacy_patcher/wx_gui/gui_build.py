@@ -102,12 +102,12 @@ class BuildFrame(wx.Frame):
         """
         while gui_support.PayloadMount(self.constants, self).is_unpack_finished() is False:
             wx.Yield()
-            time.sleep(self.constants.thread_sleep_interval)
+            time.sleep(self.constants.thread_nap_interval)
 
         thread = threading.Thread(target=self._build)
         thread.start()
 
-        gui_support.wait_for_thread(thread)
+        gui_support.wait_for_thread(thread, self.constants.thread_nap_interval)
 
         self.return_button.Enable()
 

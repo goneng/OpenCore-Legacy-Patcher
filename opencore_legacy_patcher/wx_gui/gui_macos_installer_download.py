@@ -149,7 +149,7 @@ class macOSInstallerDownloadFrame(wx.Frame):
         thread = threading.Thread(target=_fetch_installers)
         thread.start()
 
-        gui_support.wait_for_thread(thread)
+        gui_support.wait_for_thread(thread, self.constants.thread_nap_interval)
 
         progress_bar_animation.stop_pulse()
         progress_bar.Hide()
@@ -410,8 +410,8 @@ class macOSInstallerDownloadFrame(wx.Frame):
         # Show frame
         self.Show()
 
-        # Wait for thread to finish
-        gui_support.wait_for_thread(thread)
+        # Wait for thread to finish (using faster interval for smoother progress updates)
+        gui_support.wait_for_thread(thread, self.constants.thread_nap_interval)
 
         progress_bar_animation.stop_pulse()
         progress_bar.Hide()
