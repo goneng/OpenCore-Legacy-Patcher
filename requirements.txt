@@ -8,3 +8,4 @@ py-applescript
 markdown2
 macos-pkg-builder
 mac-signing-buddy
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
