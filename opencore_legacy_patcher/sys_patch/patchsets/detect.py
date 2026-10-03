@@ -200,25 +200,6 @@ class HardwarePatchsetDetection:
             logging.error("Installed patches are from different commit, unpatching is required")
             return True
 
-        wireless_keys = {"Legacy Wireless", "Modern Wireless Common"}
-
-        # Keep in sync with generate_patchset_plist
-        metadata_keys = {
-            "OpenCore Legacy Patcher",
-            "PatcherSupportPkg",
-            "Time Patched",
-            "Commit URL",
-            "Kernel Debug Kit Used",
-            "Metal Library Used",
-            "OS Version",
-            "Custom Signature",
-        }
-
-        existing_patches = set(oclp_plist) - wireless_keys - metadata_keys
-        if existing_patches:
-            logging.error(f"Patch(es) already installed: {', '.join(existing_patches)}, unpatching is required")
-            return True
-
         return False
 
 
